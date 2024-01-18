@@ -1,0 +1,28 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Tests upload artifact
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["newbranch"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload docs folder of the workflow repository
+          path: 'base'
