@@ -33,10 +33,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        # Before running upload artifact, compile your documentation with doxygen or the likes.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload docs folder of the workflow repository
           path: 'docs'
       - name: Deploy to GitHub Pages
         id: deployment
